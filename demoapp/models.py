@@ -19,4 +19,9 @@ class Menu(models.Model):
     def __str__(self):
         return self.name + ":" + self.cuisine + "->" + str(self.price)
     
-
+#modelform 
+#We will create a model our form will inherit from
+class Logger(models.Model):
+    first_name = models.CharField(max_length=200,)
+    last_name = models.CharField(max_length=100)
+    time_log = models.TimeField()

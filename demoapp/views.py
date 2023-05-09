@@ -1,8 +1,8 @@
 from django.shortcuts import render
-
+from demoapp.forms import LogForm
 # Create your views here.
 from django.http import HttpResponse
-
+from . import forms
 def home(request):
    path = request.path
    scheme = request.scheme
@@ -57,3 +57,15 @@ def menuitems(request,dish):
     }
     description = items[dish]
     return HttpResponse(f"<h2 style='color:red'> {dish}</h2>"+ f"<h3 style='color:green'>{description}</h3>")
+
+#To render the form 
+def form_view(request):
+    form = LogForm()
+    #We save the form to the DB
+    if request.method == 'POST':
+        form = LogForm(request.POST)
+        if form.is_valid():
+            form.save()
+
+    context = {'form':form}
+    return render(request,'home.html',context)

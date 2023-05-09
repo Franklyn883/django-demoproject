@@ -8,4 +8,5 @@ urlpatterns = [
     #path('getuser/<name>/<id>', views.pathview),
     path('getuser/', views.qryview),
     path('dishes/<str:dish>', views.menuitems),
+    path('form/', views.form_view),
 ]
