@@ -25,3 +25,14 @@ class Logger(models.Model):
     first_name = models.CharField(max_length=200,)
     last_name = models.CharField(max_length=100)
     time_log = models.TimeField()
+
+#We are making a model, to learn how to use the django admin feature
+class Reservation(models.Model):
+    name = models.CharField(max_length=200)
+    contact = models.CharField('Phone Number', max_length=200)
+    time = models.TimeField()
+    count = models.IntegerField()
+    notes = models.CharField(max_length=500, null=True, blank=True)
+
+    def __str__(self):
+        return self.name
