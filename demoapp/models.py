@@ -12,7 +12,7 @@ class MenuCategories(models.Model):
 class Menu(models.Model):
     name = models.CharField(max_length=100)
     cuisine= models.CharField(max_length=100)
-    price = models.IntegerField()
+    price = models.IntegerField(null=False)
     category_id= models.ForeignKey(MenuCategories, on_delete=models.PROTECT, default=None, related_name="category_name")
 #The category is the FK that connects the Menu table to the MenuCategories. This is a one to many relationship, since
 #many Menu can only belong to one MenuCategories. The on_delete = models.PROTECT
