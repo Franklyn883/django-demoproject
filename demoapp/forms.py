@@ -1,13 +1,14 @@
 from django import forms
 from .models import Logger
 
+
 class DemoForm(forms.Form):
     name = forms.CharField(widget=forms.Textarea(attrs={'rows':5}))
     email = forms.EmailField(label= 'enter your email')
     reservation_date = forms.DateField(widget=forms.NumberInput(attrs={'type':'date'}))
 
 class ApplicationForm(forms.Form):
-    name = forms.CharField(label= 'Name of Applicant', max_length=100)
+    name = forms.CharField(label= 'Name of Applicant', max_length=100, help_text="Enter full Name")
     address = forms.CharField(label="Address", max_length=100)
     post = (('Manager', 'Manager'),('Cashier', 'Cashier','Cashier'),('Operator', 'Operator'))
     fields = forms.ChoiceField(choices=post)
