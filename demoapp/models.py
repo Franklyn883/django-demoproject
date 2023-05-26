@@ -36,3 +36,10 @@ class Reservation(models.Model):
 
     def __str__(self):
         return self.name
+    
+
+
+# Giving user permission
+# custom permission: This is a Product model with a custom permission "change_category"
+
+
