@@ -9,4 +9,5 @@ urlpatterns = [
     path('getuser/', views.qryview),
     path('dishes/<str:dish>', views.menuitems),
     path('form/', views.form_view),
+    path('about/', views.about, name='about'),
 ]
