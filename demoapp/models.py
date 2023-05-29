@@ -45,6 +45,14 @@ class Reservation(models.Model):
         return self.name
     
 
+class Registration(models.Model):
+    first_name = models.CharField(max_length=200)
+    last_name = models.CharField(max_length=200)
+    email = models.EmailField(unique=True)
+    phone_number = models.CharField(max_length=50, unique=True)
+
+    def __str__(self):
+        return self.first_name
 
 # Giving user permission
 # custom permission: This is a Product model with a custom permission "change_category"

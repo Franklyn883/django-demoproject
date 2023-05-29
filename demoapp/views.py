@@ -1,26 +1,26 @@
-from django.shortcuts import render
-from demoapp.forms import LogForm
+from django.shortcuts import render,redirect
+from demoapp.forms import LogForm, RegisterForm
 # Create your views here.
 from django.http import HttpResponse
-from . import forms
+
 from .models import Menu
-def home(request):
-   path = request.path
-   scheme = request.scheme
-   method = request.method
-   address = request.META['REMOTE_ADDR']
-   user_agent = request.META['HTTP_USER_AGENT']
-   path_info = request.path_info
-   mssg = f"""<br>
-        <br>Path: {path}
-        <br>Scheme: {scheme}
-        <br>Method: {method}
-        <br>Address: {address}
-        <br>User Agent: {user_agent}
-        <br>Path info :{path_info}
+# def home(request):
+#    path = request.path
+#    scheme = request.scheme
+#    method = request.method
+#    address = request.META['REMOTE_ADDR']
+#    user_agent = request.META['HTTP_USER_AGENT']
+#    path_info = request.path_info
+#    mssg = f"""<br>
+#         <br>Path: {path}
+#         <br>Scheme: {scheme}
+#         <br>Method: {method}
+#         <br>Address: {address}
+#         <br>User Agent: {user_agent}
+#         <br>Path info :{path_info}
    
-   """
-   return  HttpResponse(mssg, content_type ='text/html', charset='utf-8')
+#    """
+#    return  HttpResponse(mssg, content_type ='text/html', charset='utf-8')
 
 def sayHello(request):
     content = '<html><body style="background-color:black"> \
@@ -110,3 +110,23 @@ def menu_id(request):
 
     return render(request, 'menu.html', newmenu_dict)
     
+
+def home(request):
+    return render(request, 'demoapp/home.html', {})
+
+def register(request):
+    form = RegisterForm()
+    if request.method =='POST':
+        form_data = RegisterForm(request.POST)
+        if form_data.is_valid():
+            form_data.save()
+            return redirect('demoapp:home')
+
+    context = {'form' : form}
+    return render(request, 'demoapp/register.html', context)
+
+def about(request):
+    return render(request, 'demoapp/about.html', {})
+
+def contact(request):
+    return render(request, 'demoapp/contact.html', {})
