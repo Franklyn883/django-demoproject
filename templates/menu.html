@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+<!-- <h1> Loop construct in a django template </h1>
+	{% for item in mains %}
+  <p> {{item.name}}: {{item.price}} </p>
+  {% endfor %} -->
+
+
+  <div>
+    <h1>Looping construct in a template</h1>
+    {{menu}}
+  {% if menu %}
+  {% for item in menu %}
+  <p> {{item.name}} : {{item.price}} </p>
+
+  {% endfor %}
+  {% else %}
+    <p>Nothing to display, list is empty</p>
+  {% endif %}
+  </div>
+ 
+</body>
+</html>

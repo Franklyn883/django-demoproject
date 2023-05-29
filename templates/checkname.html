@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+<style>
+.welcome{
+  background-color: aquamarine;
+  padding: 3rem;
+  text-align: center;
+}
+.lang-list{
+  background-color: cornflowerblue;
+  
+}
+
+</style>
+
+  <body>
+    <h1>Hello {{user}}</h1>
+    <a href="">Home </a>
+
+    <main class="welcome">
+      <h3>Name : {{person.first_name }}</h3>
+      <h3>Profession : {{person.profession}}</h3>
+    </main>
+    <div class="welcome">
+      {% if name == "admin" %}
+      <h3>Welcome {{name}}</h3>
+      {% else %}
+      <h3>You need to signup</h3>
+      {% endif %}
+    </div>
+
+    <div class="lang-list">
+      <h2>List of Languages</h2>
+      <ul >
+      {% for item in lang %}
+        <!-- <li> {{forloop.first}} : {{item}} </li> -->
+        <!-- <li> {{forloop.counter}} : {{item}} </li> -->
+        <li> {{forloop.first}} : {{item}} </li>
+      {% endfor %}
+    </ul>
+    </div>
+
+    <div>
+      <h2>Nested loops</h2>
+      {% for key, values in dct.items %}
+      <p> {{forloop.parentloop.counter}}:{{key}} </p>
+      
+      <ul>
+        {% for value in values %}
+        <li> {{value}} </li>
+        {% endfor%}
+      </ul>
+      {% endfor %}
+    </div>
+  </body>
+</html>

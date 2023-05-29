@@ -10,4 +10,6 @@ urlpatterns = [
     path('dishes/<str:dish>', views.menuitems),
     path('form/', views.form_view),
     path('about/', views.about, name='about'),
+    path('checkname/<str:name>',views.checkname, name='checkname'),
+    path('menu/', views.menu_id)
 ]

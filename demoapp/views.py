@@ -3,6 +3,7 @@ from demoapp.forms import LogForm
 # Create your views here.
 from django.http import HttpResponse
 from . import forms
+from .models import Menu
 def home(request):
    path = request.path
    scheme = request.scheme
@@ -79,3 +80,33 @@ def about(request):
 
     context = {'text':text}
     return render(request, 'about.html', context)
+
+
+def checkname(request, name):
+    person = {'first_name':'Roger', "profession":"Teacher"}
+    lang = ['javascript', "python", "java", "c++", "Ruby", "rust"]
+    dct = {'digits': ['One', 'Two', 'Three'],'tens': ['Ten', 'Twenty', 'Thirty']} 
+    context = {'name':name, "person":person, "lang":lang, 'dct':dct}
+    
+    return render(request, 'checkname.html', context )
+
+
+def menu(request):
+    # menuitems = {'name':"Greek Salad"}
+
+    newmenu = {
+        'mains':[
+            {'name':'falafel', 'price':'12'},
+            {'name':'sharwama', 'price':'15'},
+            {'name':'gyro', 'price':'10'},
+            {'name':'bread', 'price':'12'},
+        ]
+    }
+    return render(request, 'menu.html', newmenu)
+
+def menu_id(request):
+    newmenu = Menu.objects.all()
+    newmenu_dict = {'menu':newmenu}
+
+    return render(request, 'menu.html', newmenu_dict)
+    
