@@ -31,7 +31,7 @@ class Menu(models.Model):
 class Logger(models.Model):
     first_name = models.CharField(max_length=200,)
     last_name = models.CharField(max_length=100)
-    time_log = models.TimeField()
+    booking_time = models.DateTimeField(auto_now=True)
 
 #We are making a model, to learn how to use the django admin feature
 class Reservation(models.Model):
@@ -56,5 +56,7 @@ class Registration(models.Model):
 
 # Giving user permission
 # custom permission: This is a Product model with a custom permission "change_category"
+
+#
 
 
